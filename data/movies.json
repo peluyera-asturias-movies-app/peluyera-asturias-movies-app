@@ -1,0 +1,46 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "shrek",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "title": "Barbie",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "title": "titanic",
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "title": "Spider-man",
+      "rating": 5
+    },
+    {
+      "id": 5,
+      "title": "Joker",
+      "rating": 5
+    },
+    {
+      "id": 6,
+      "title": "some other movie",
+      "rating": 5
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
+    }
+  ]
+}
