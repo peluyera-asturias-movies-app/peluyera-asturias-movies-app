@@ -43,24 +43,6 @@ const renderBook = (book, target) => {
 
 
 
-// getMovies();
-//
-// getMovieByTitleOMDB("batman");
-//
-// getMovieById(1)
-
-//deleteMovie(7);
-
-
-const myNewMovie = {
-        id: 10,
-        title:  "Another other Super duper mari broosssssss movie",
-        rating: 0
-}
-
-postMovie(myNewMovie);
-// patchMovie(myNewMovie);
-
 
 
 
