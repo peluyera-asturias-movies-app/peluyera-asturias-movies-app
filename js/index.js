@@ -1,61 +1,66 @@
-import {getMovieById,getMovies,getMovieByTitleOMDB,deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie } from "./utils/movies.js"
-import {TMDB_API_KEY} from "./keys.js";
+import {getMovieById,getMovies,getMovieByTitleOMDB,deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList } from "./utils/movies.js"
 
-const renderCategories = (categories) => {
-    // create a single HTML string made up of all the categories
-    const categoriesHTML = categories.map((category) => `<span class="book-card-tag">${category}</span>`).join("");
-    return categoriesHTML;
-};
-const renderBook = (book, target) => {
-    const bookCard = document.createElement("article");
-    bookCard.classList.add("book-card");
-    bookCard.innerHTML = `
-        <div class="book-card-title">${book.title}</div>
-        <p class="book-card-year">${book.year}</p>
-        <p class="book-card-description">${book.description}.</p>
-        <div class="d-flex align-items-center justify-content-between">
-            <span class="book-card-span">Rating</span>
-            <span class="book-card-rating">${book.rating}/10</span>
-        </div>
-        <meter class="book-card-meter" min="0" max="10" value="${book.rating}"></meter>
-        <div class="d-flex align-items-center justify-content-start gap-10 flex-wrap">
-            ${renderCategories(book.categories)}
-        </div>
-    `;
-    // IF we had buttons in here that needed event listeners, we would do it here
-    // const editBtn = bookCard.querySelector("button");
-    // editBtn.addEventListener("click", async () => {
-    //     /// DO THE THANG!
-    // });
-    // THEN append it into the DOM
-    target.appendChild(bookCard);
-};
+
 
 //////// MAIN METHOD
 (async () => {
-    /////
-    // const books = await getBooks();
-    // console.log(books);
-    // for (let book of books) {
-    //     const target = document.querySelector(".books-grid");
-    //     renderBook(book, target);
-    // }
+    const renderCategories = (categories = []) => {
+        // create a single HTML string made up of all the categories
+        const categoriesHTML = categories?.map((category) => `<span class="movie-card-tag">${category}</span>`).join("");
+        return categoriesHTML;
+    };
+    const renderMovie = (movie, target) => {
+        const movieCard = document.createElement("article");
+        movieCard.classList.add("movie-card");
+        movieCard.innerHTML = `
+            <div class="movie-card-title">${movie.title ?? "movie title goes here"}</div>
+            <p class="movie-card-year">${movie.release_date ?? "Movie year goes here"}</p>
+            ${movie.overview && `<p class="movie-card-description">${movie.overview}.</p>`}
+            <div class="d-flex align-items-center justify-content-between">
+                <span class="movie-card-span">Rating</span>
+                <span class="movie-card-rating">${movie.rating}/10</span>
+            </div>
+            <meter class="movie-card-meter" min="0" max="10" value="${movie.rating}"></meter>
+            <div class="d-flex align-items-center justify-content-start gap-10 flex-wrap">
+                ${movie.categories && renderCategories(movie.categories)}
+            </div>
+        `;
+        // IF we had buttons in here that needed event listeners, we would do it here
+        // const editBtn = bookCard.querySelector("button");
+        // editBtn.addEventListener("click", async () => {
+        //     /// DO THE THANG!
+        // });
+        // THEN append it into the DOM
+        target.appendChild(movieCard);
+    };
 
 
+    ////
+    const movies = await getMovies();
+    console.log(movies);
+    for (let movie of movies) {
+        const target = document.querySelector(".movies-grid");
+        renderMovie(movie, target);
+
+    }
+
+// let myNewMovie = await getMovieByTitleOMDB("thor");
+//
+//     console.log(myNewMovie);
+
+let searchResult = await searchMoviesTMDB("spiderman")
+
+let movieToAdd = searchResult.results[0]
 
 
-
-
-
-
-
+    postMovie(movieToAdd);
 
 
 })();
 
 /// build form to add movie
 
-// build form to get all movies
+// build option to get all movies
 
 // build input to search for movie
 
@@ -63,3 +68,7 @@ const renderBook = (book, target) => {
 
 // build input to patch movie
 
+
+// movie parameters to grab
+// title, id, genre, overview, poster,date
+// poster https://image.tmdb.org/t/p/w500 + poster path

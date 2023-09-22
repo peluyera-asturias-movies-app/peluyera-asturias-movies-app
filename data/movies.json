@@ -39,6 +39,58 @@
       "id": 10,
       "title": "Another other Super duper mari broosssssss movie",
       "rating": 0
+    },
+    {
+      "id": 10195,
+      "original_language": "en",
+      "original_title": "Thor",
+      "overview": "Against his father Odin's will, The Mighty Thor - a powerful but arrogant warrior god - recklessly reignites an ancient war. Thor is cast down to Earth and forced to live among humans as punishment. Once here, Thor learns what it takes to be a true hero when the most dangerous villain of his world sends the darkest forces of Asgard to invade Earth.",
+      "popularity": 69.991,
+      "poster_path": "/prSfAi1xGrhLQNxVSUFh61xQ4Qy.jpg",
+      "release_date": "2011-04-21",
+      "title": "Thor",
+      "video": false,
+      "vote_average": 6.768,
+      "vote_count": 20008
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/bHefJgSTO3JOZy9fETN6cWpvbMX.jpg",
+      "genre_ids": [
+        28,
+        53,
+        10752
+      ],
+      "id": 75674,
+      "original_language": "en",
+      "original_title": "Act of Valor",
+      "overview": "When a covert mission to rescue a kidnapped CIA operative uncovers a chilling plot, an elite, highly trained U.S. SEAL team speeds to hotspots around the globe, racing against the clock to stop a deadly terrorist attack.",
+      "popularity": 19.287,
+      "poster_path": "/1Xcd5ci69pVXMPP02DU11Ffq0yY.jpg",
+      "release_date": "2012-02-24",
+      "title": "Act of Valor",
+      "video": false,
+      "vote_average": 6.463,
+      "vote_count": 1032
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/jHxCeXnSchAuwHnmVatTgqMYdX8.jpg",
+      "genre_ids": [
+        14,
+        28
+      ],
+      "id": 557,
+      "original_language": "en",
+      "original_title": "Spider-Man",
+      "overview": "After being bitten by a genetically altered spider at Oscorp, nerdy but endearing high school student Peter Parker is endowed with amazing powers to become the superhero known as Spider-Man.",
+      "popularity": 69.533,
+      "poster_path": "/gh4cZbhZxyTbgxQPxD0dOudNPTn.jpg",
+      "release_date": "2002-05-01",
+      "title": "Spider-Man",
+      "video": false,
+      "vote_average": 7.279,
+      "vote_count": 17625
     }
   ]
 }

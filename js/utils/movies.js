@@ -1,6 +1,6 @@
 import {TMDB_API_KEY,OMDB_API_KEY} from "../keys.js";
 
-// below functions is for OMDB
+// below functions is for TMDB
 const searchMoviesTMDB = async (query) => {
     // get the movies from the API
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`;
@@ -38,7 +38,7 @@ const latestMoviesList = async () =>{
 
 //function to search movie by tittle
 const getMovieByTitleOMDB = async (title) => {
-    const url = `https://www.omdbapi.com/?plot=full&s=${title}&type=movie&apikey=${OMDB_API_KEY}`;
+    const url = `https://www.omdbapi.com/?plot=full&s=${title}&page=1&type=movie&apikey=${OMDB_API_KEY}`;
     const options = {
         method: "GET",
 
@@ -60,8 +60,7 @@ const getMovies = async () => {
     };
     const response = await fetch(url, options);
     const movies= await response.json();
-    console.log(movies);
-    console.log("Hi there Luis")
+    // console.log(movies);
     return movies;
 };
 
@@ -168,4 +167,4 @@ const patchMovie = async (movie) => {
 
 
 
-export { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie};
+export { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList};
