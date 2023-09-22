@@ -1,6 +1,67 @@
 import { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList} from "../js/utils/movies.js"
 
+// THIS IS FOR ADD A MOVIE BUTTON
+// Get the modal and button elements
+const addMovieModal = document.getElementById("addMovieModal");
+const addMovieButton = document.getElementById("addMovieButton");
+const closeModal = document.getElementById("closeModal");
 
+// Show the modal when the button is clicked
+addMovieButton.addEventListener("click", () => {
+    addMovieModal.style.display = "block";
+});
+
+// Close the modal when the close button is clicked
+closeModal.addEventListener("click", () => {
+    addMovieModal.style.display = "none";
+});
+
+// Close the modal when clicking outside the modal
+window.addEventListener("click", (event) => {
+    if (event.target == addMovieModal) {
+        addMovieModal.style.display = "none";
+    }
+});
+
+// Prevent the form from submitting (you can add your logic here)
+document.getElementById("movieForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+    // Add your movie addition logic here
+    // For now, let's just close the modal
+    addMovieModal.style.display = "none";
+});
+
+// // EDIT A MOVIE BUTTON
+// Function to display the edit modal with movie details
+// Get the modal and button elements
+const editMovieModal = document.getElementById("editMovieModal");
+const editMovieButton = document.getElementById("editMovieButton");
+const closeModalTwo = document.getElementById("closeModal-two");
+
+// Show the modal when the button is clicked
+editMovieButton.addEventListener("click", () => {
+    editMovieModal.style.display = "block";
+});
+
+// Close the modal when the close button is clicked
+closeModalTwo.addEventListener("click", () => {
+    editMovieModal.style.display = "none";
+});
+
+// Close the modal when clicking outside the modal
+window.addEventListener("click", (event) => {
+    if (event.target == editMovieModal) {
+        editMovieModal.style.display = "none";
+    }
+});
+
+// Prevent the form from submitting (you can add your logic here)
+document.getElementById("movieForm-two").addEventListener("submit", (event) => {
+    event.preventDefault();
+    // Add your movie addition logic here
+    // For now, let's just close the modal
+    editMovieModal.style.display = "none";
+});
 
 
 
