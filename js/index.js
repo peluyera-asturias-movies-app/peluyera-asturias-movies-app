@@ -1,21 +1,28 @@
+import { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList} from "../js/utils/movies.js"
 
-const preloader = document.querySelector('.preloader');
 
-const fadeEffect = setInterval(() => {
-    // if we don't set opacity 1 in CSS, then   //it will be equaled to "", that's why we   // check it
-    if (!preloader.style.opacity) {
-        preloader.style.opacity = 3;
-    }
-    if (preloader.style.opacity > 0) {
-        preloader.style.opacity -= 0.5;
-    } else {
-        clearInterval(fadeEffect);
-    }
-}, 400);
+
 
 
 //////// MAIN METHOD
 (async () => {
+
+    // const preloader = document.querySelector('.preloader');
+    //
+    // const fadeEffect = setInterval(() => {
+    //     // if we don't set opacity 1 in CSS, then   //it will be equaled to "", that's why we   // check it
+    //     if (!preloader.style.opacity) {
+    //         preloader.style.opacity = 3;
+    //     }
+    //     if (preloader.style.opacity > 0) {
+    //         preloader.style.opacity -= 0.5;
+    //     } else {
+    //         clearInterval(fadeEffect);
+    //     }
+    // }, 400);
+
+
+
     const renderCategories = (categories = []) => {
         // create a single HTML string made up of all the categories
         const categoriesHTML = categories?.map((category) => `<span class="movie-card-tag">${category}</span>`).join("");
@@ -63,7 +70,7 @@ let searchResult = await searchMoviesTMDB(NaN)
 let movieToAdd = searchResult.results[0]
 
 
-    postMovie(movieToAdd);
+
 
 
 
