@@ -4,6 +4,7 @@
 :root {
 	--primary-color: #769e48;
 	--grey: #e8e9eb;
+	--dark-grey: #595f69;
 	--bg-color: #f8f8f8;
 }
 body {
@@ -12,20 +13,22 @@ body {
 	line-height: 1.5;
 	color: #333;
 	height: 100%;
-	background-color: var(--bg-color);
+	background-color: #333333;
 }
 
 header.container {
 	padding: 20px 0;
 }
-
+.row-logo{
+	text-align: center;
+}
 .logo {
 	font-size: 28px;
 	font-weight: 500;
 }
 
 .logo span {
-	color: var(--primary-color);
+	color: red;
 	font-weight: 700;
 }
 
@@ -70,7 +73,7 @@ ul.cat-tab-menu li span {
 	border-radius: 3px;
 }
 
-.books-grid {
+.movies-grid {
 	display: flex;
 	width: 100%;
 	gap: 30px;
@@ -79,17 +82,89 @@ ul.cat-tab-menu li span {
 	margin: 20px 0;
 }
 
-.book-card {
+.movie-card {
 	min-height: 272px;
 	border-radius: 20px;
 	background-color: #fff;
 	width: calc(33.333% - 20px);
+	padding: 25px;
+	display: flex;
+	flex-direction: column;
 }
-.book-card-meter {
-	width: 100%;
+
+.movie-card-title {
+	font-size: 18px;
+	font-weight: 500;
 }
-.book-card-description {
+.movie-card-year {
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--dark-grey);
+	margin-bottom: 10px;
+}
+.movie-card-description {
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--dark-grey);
+	margin-bottom: 10px;
 	max-height: 65px;
 	overflow: hidden;
 	flex: 1 0 65px;
+}
+.movie-card-span,
+.movie-card-rating {
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--dark-grey);
+}
+.movie-card-meter {
+	width: 100%;
+	margin-bottom: 10px;
+}
+.movie-card-tag {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px 20px;
+	border-radius: 8px;
+	background-color: var(--bg-color);
+}
+btn-cta {
+	display: flex;
+	color: white;
+	background-color: green;
+}
+.carousel{
+	position: relative;
+	left: -13.5px;
+}
+input[type="search"] {
+	border: none;
+	background: transparent;
+	margin: 0;
+	padding: 7px 8px;
+	font-size: 14px;
+	color: inherit;
+	border: 1px solid transparent;
+	border-radius: inherit;
+}
+
+input[type="search"]::placeholder {
+	color: #bbb;
+}
+.btn-search-movie[type="submit"] {
+	text-indent: -999px;
+	overflow: hidden;
+	width: 40px;
+	padding: 0;
+	margin: 0;
+	border: 1px solid transparent;
+	border-radius: inherit;
+	background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.btn-search-movie[type="submit"]:hover {
+	opacity: 1;
 }
