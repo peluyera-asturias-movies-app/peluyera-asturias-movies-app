@@ -31,20 +31,14 @@
       "rating": 5
     },
     {
-      "movie": {
-        "id": "",
-        "title": "Super duper mari broosssssss movie",
-        "rating": 5
-      },
+      "title": "Super duper mari broosssssss movie",
+      "rating": 0,
       "id": 7
     },
     {
-      "movie": {
-        "id": "",
-        "title": "Super duper mari broosssssss movie",
-        "rating": 5
-      },
-      "id": 8
+      "id": 10,
+      "title": "Another other Super duper mari broosssssss movie",
+      "rating": 0
     }
   ]
 }

@@ -1,4 +1,4 @@
-import {getMovieById,getMovies,getMovieByTitleOMDB,deleteMovie,postMovie,searchMovieByTitleLocal } from "./utils/movies.js"
+import {getMovieById,getMovies,getMovieByTitleOMDB,deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie } from "./utils/movies.js"
 import {TMDB_API_KEY} from "./keys.js";
 
 const renderCategories = (categories) => {
@@ -43,25 +43,26 @@ const renderBook = (book, target) => {
 
 
 
-getMovies();
-
-getMovieByTitleOMDB("batman");
-
-getMovieById(1)
+// getMovies();
+//
+// getMovieByTitleOMDB("batman");
+//
+// getMovieById(1)
 
 //deleteMovie(7);
 
 
 const myNewMovie = {
-        "id": "",
-        "title": "Super duper mari broosssssss movie",
-        "rating": 5
+        id: 10,
+        title:  "Another other Super duper mari broosssssss movie",
+        rating: 0
 }
 
-const newAddedMovie = await postMovie(myNewMovie);
+postMovie(myNewMovie);
+// patchMovie(myNewMovie);
 
-    console.log(newAddedMovie);
-    searchMovieByTitleLocal("shrek")
+
+
 
 
 

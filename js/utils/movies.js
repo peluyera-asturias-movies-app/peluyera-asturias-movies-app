@@ -34,7 +34,7 @@ const latestMoviesList = async () =>{
 
 };
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////LOCAL (FAVORITES) ////////////////////////////////////////////////////////////////
 
 //function to search movie by tittle
 const getMovieByTitleOMDB = async (title) => {
@@ -95,20 +95,33 @@ const deleteMovie = async (id) => {
     return movie;
 };
 
+// function to search movie in favorites
+const searchMovieByTitleLocal = async (title) => {
+    const url = `http://localhost:3000/movies?title=${title}`;
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    };
+    const response = await fetch(url, options);
+    const movie = await response.json();
+    console.log(movie);
+    return movie;
+};
 
+// function to post movie into favorites
 const postMovie = async (movie) => {
     try {
         //todo: validate movie isn't already in the db
-        const searchResult = await searchMovieByTitleLocal(movie.title);
-        if (searchResult.length > 0) {
-            // book already exists
-            // throw error
-            throw new Error("Book already exists in the database");
-        }
+        // const searchResult = await searchMovieByTitleLocal(movie.title);
+        // if (searchResult.length > 0) {
+        //     // book already exists
+        //     // throw error
+        //     throw new Error("Book already exists in the database");
+        // }
         const url = `http://localhost:3000/movies`;
-        const body = {
-            movie: movie,
-        };
+        const body = movie;
         const options = {
             method: "POST",
             headers: {
@@ -125,27 +138,11 @@ const postMovie = async (movie) => {
     }
 };
 
-const searchMovieByTitleLocal = async (title) => {
-    const url = `http://localhost:3000/movies?title=${title}`;
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    };
-    const response = await fetch(url, options);
-    const movie = await response.json();
-    console.log(movie);
-    return movie;
-};
-
-
-
-
-const patchBook = async (book) => {
+//function to patch edit movie
+const patchMovie = async (movie) => {
     try {
-        const url = `http://localhost:3000/books/${book.id}`;
-        const body = book;
+        const url = `http://localhost:3000/movies/${movie.id}`;
+        const body = {...movie};
         const options = {
             method: "PATCH",
             headers: {
@@ -155,6 +152,7 @@ const patchBook = async (book) => {
         };
         const response = await fetch(url, options);
         const newId = await response.json();
+        console.log(newId);
         return newId;
     } catch (error) {
         console.log(error);
@@ -162,17 +160,12 @@ const patchBook = async (book) => {
     }
 };
 
-const searchBookByTitle = async (title) => {
-    const url = `http://localhost:3000/books?title=${title}`;
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    };
-    const response = await fetch(url, options);
-    const books = await response.json();
-    return books;
-};
 
-export { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal};
+
+
+
+
+
+
+
+export { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie};
