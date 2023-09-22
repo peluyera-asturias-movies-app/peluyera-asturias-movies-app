@@ -15,12 +15,13 @@ import {getMovieById,getMovies,getMovieByTitleOMDB,deleteMovie,postMovie,searchM
         movieCard.innerHTML = `
             <div class="movie-card-title">${movie.title ?? "movie title goes here"}</div>
             <p class="movie-card-year">${movie.release_date ?? "Movie year goes here"}</p>
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="poster-img" alt="poster-img">
             ${movie.overview && `<p class="movie-card-description">${movie.overview}.</p>`}
             <div class="d-flex align-items-center justify-content-between">
                 <span class="movie-card-span">Rating</span>
-                <span class="movie-card-rating">${movie.rating}/10</span>
+                <span class="movie-card-rating">${movie.vote_average.toFixed()}/10</span>
             </div>
-            <meter class="movie-card-meter" min="0" max="10" value="${movie.rating}"></meter>
+            <meter class="movie-card-meter" min="0" max="10" value="${movie.vote_average}"></meter>
             <div class="d-flex align-items-center justify-content-start gap-10 flex-wrap">
                 ${movie.categories && renderCategories(movie.categories)}
             </div>
@@ -44,16 +45,14 @@ import {getMovieById,getMovies,getMovieByTitleOMDB,deleteMovie,postMovie,searchM
 
     }
 
-// let myNewMovie = await getMovieByTitleOMDB("thor");
-//
-//     console.log(myNewMovie);
 
-let searchResult = await searchMoviesTMDB("spiderman")
+let searchResult = await searchMoviesTMDB(NaN)
 
 let movieToAdd = searchResult.results[0]
 
 
     postMovie(movieToAdd);
+
 
 
 })();
