@@ -1,20 +1,6 @@
 import {getMovieById,getMovies,getMovieByTitleOMDB,deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie } from "./utils/movies.js"
 import {TMDB_API_KEY} from "./keys.js";
 
-const preloader = document.querySelector('.preloader');
-
-const fadeEffect = setInterval(() => {
-    // if we don't set opacity 1 in CSS, then   //it will be equaled to "", that's why we   // check it
-    if (!preloader.style.opacity) {
-        preloader.style.opacity = 3;
-    }
-    if (preloader.style.opacity > 0) {
-        preloader.style.opacity -= 0.5;
-    } else {
-        clearInterval(fadeEffect);
-    }
-}, 400);
-
 window.addEventListener('load', fadeEffect);
 const renderCategories = (categories) => {
     // create a single HTML string made up of all the categories
