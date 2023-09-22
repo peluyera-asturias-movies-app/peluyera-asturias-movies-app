@@ -61,6 +61,7 @@ const getMovies = async () => {
     const response = await fetch(url, options);
     const movies= await response.json();
     console.log(movies);
+    console.log("Hi there Luis")
     return movies;
 };
 
@@ -105,9 +106,14 @@ const postMovie = async (movie) => {
             throw new Error("Book already exists in the database");
         }
         const url = `http://localhost:3000/movies`;
-        const body = movie;
+        const body = {
+            movie: movie,
+        };
         const options = {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify(body),
         };
         const response = await fetch(url, options);
