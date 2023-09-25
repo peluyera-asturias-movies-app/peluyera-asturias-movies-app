@@ -35,9 +35,10 @@ header.container {
 .container.cat-tags .column {
 	border-bottom: 1px solid #e8e9eb;
 }
-.movies-grid {
+#movies-grid {
 	display: flex;
 	width: 100%;
+	max-height: 100px;
 	gap: 30px;
 	flex-wrap: wrap;
 	justify-content: start;
@@ -149,6 +150,7 @@ button {
 	position: relative;
 	z-index: 1;
 }
+
 article img {
 	object-fit: cover;
 }

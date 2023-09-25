@@ -2,6 +2,7 @@ import { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,sea
 
 // function creates and adds moive card to DOM
 export const renderModal = (movie) => {
+
     const modal = document.createElement('div');
     modal.classList.add('custom-modal');
     modal.innerHTML = `
@@ -29,12 +30,16 @@ export const renderModal = (movie) => {
             id: movie.id,
             overview: newDescValue
         }
-        try {
+
+        const target = document.querySelector(".movies-grid");
+            let updatedMovies = await getMovies();
             await patchMovie(movieObj);
             modal.remove();
-        } catch(error) {
-            alert(error);
-        }
+            ///need to fix to show updated card
+            //make a copy of getMovies function without the preloder
+            // renderMovie(updatedMovies,target);
+
+
     });
 
     closeBtn.addEventListener('click', ()=>{
@@ -59,7 +64,7 @@ export const renderMovie = (movie, target) => {
             </div>
             <div class="rating d-flex align-items-center justify-content-between">
                 <span class="movie-card-span">Rating</span>
-                <span class="movie-card-rating">${movie.vote_average.toFixed()}/10</span>
+                <span class="movie-card-rating">${movie.vote_average?.toFixed()}/10</span>
             </div>
             <meter class="movie-card-meter" min="0" max="10" value="${movie.vote_average}"></meter>
             <input type="hidden" value="${movie.id}">
