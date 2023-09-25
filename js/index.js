@@ -1,5 +1,15 @@
 import { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList,showLoader,hideLoader} from "../js/utils/movies.js"
 
+
+//////// MAIN METHOD
+(async () => {
+
+
+
+
+
+
+
 // THIS IS FOR ADD A MOVIE BUTTON FORM
 // Get the modal and button elements
 const addMovieModal = document.getElementById("addMovieModal");
@@ -118,8 +128,7 @@ editMovieFormBtn.addEventListener("click", (e)=>{
 
 
 
-//////// MAIN METHOD
-(async () => {
+
     // variable for preloader
     let loader = document.getElementById("preloader")
 
@@ -135,7 +144,9 @@ editMovieFormBtn.addEventListener("click", (e)=>{
         movieCard.innerHTML = `
             <div class="movie-card-title">${movie.title}</div>
             <p class="movie-card-year">${movie.release_date}</p>
+            <div class="d-flex, full-width, heigth align-items center">
             <img src="https://image.tmdb.org/t/p/w500${movie.poster_path ?? "NO IMAGE FOUND" }" class="poster-img" alt="poster-img">
+            </div>
             ${movie.overview && `<p class="movie-card-description">${movie.overview}.</p>`}
             <div class="d-flex align-items-center justify-content-between">
                 <span class="movie-card-span">Rating</span>

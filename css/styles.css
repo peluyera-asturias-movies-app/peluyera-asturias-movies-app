@@ -90,6 +90,10 @@ ul.cat-tab-menu li span {
 	padding: 25px;
 	display: flex;
 	flex-direction: column;
+	transition: 2s;
+}
+.movie-card:hover {
+	transform: scale(1.05);
 }
 
 .movie-card-title {
@@ -103,8 +107,8 @@ ul.cat-tab-menu li span {
 	margin-bottom: 10px;
 }
 .movie-card img {
-	max-height: 300px;
-	object-fit: scale-down;
+
+	object-fit: fill;
 }
 .movie-card-description {
 	font-size: 14px;
