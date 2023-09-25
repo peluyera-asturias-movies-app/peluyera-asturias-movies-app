@@ -53,14 +53,11 @@ export const renderMovie = (movie, target) => {
             <div class="movie-card-title">${movie.title}</div>
             <p class="movie-card-year">${movie.release_date}</p></div>
             ${movie.overview && `<p class="movie-card-description">${movie.overview}.</p>`}
-            <div class="d-flex align-items-center justify-content-between">
+            <div class="rating d-flex align-items-center justify-content-between">
                 <span class="movie-card-span">Rating</span>
                 <span class="movie-card-rating">${movie.vote_average.toFixed()}/10</span>
             </div>
             <meter class="movie-card-meter" min="0" max="10" value="${movie.vote_average}"></meter>
-            <div class="d-flex align-items-center justify-content-start gap-10 flex-wrap">
-                ${movie.categories && renderCategories(movie.categories)}
-            </div>
             <input type="hidden" value="${movie.id}">
             <button  class="edit-movie-btn" data-bs-toggle="modal" data-bs-target="#editModal${movie.id}">Edit Movie</button>
             <button  class="delete-movie-btn">Delete Movie</button>
