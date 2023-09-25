@@ -20,7 +20,9 @@ export const renderModal = (movie) => {
     const closeBtn = modal.querySelector('.close');
     const modalBG = modal.querySelector('.custom-modal-bg');
 
-    submitBtn.addEventListener('click', async ()=>{
+    //event listener to edit movie form
+    submitBtn.addEventListener('click', async (e)=>{
+        e.preventDefault();
         const newDescription = modal.querySelector("#description-edit-form");
         const newDescValue = newDescription.value;
         const movieObj = {
@@ -34,6 +36,7 @@ export const renderModal = (movie) => {
             alert(error);
         }
     });
+
     closeBtn.addEventListener('click', ()=>{
        modal.remove();
     });
