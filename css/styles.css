@@ -237,4 +237,10 @@ input[type="search"]:focus {
 	position: relative;
 	z-index: 1;
 }
+.poster-img{
+	display: flex;
+	position: relative;
+	/*flex-grow: 2 0 0;*/
+	/*width: 100px;*/
+}
 

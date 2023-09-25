@@ -48,7 +48,7 @@ export const renderMovie = (movie, target) => {
     movieCard.innerHTML = `
             <div class="movie-card-title">${movie.title}</div>
             <p class="movie-card-year">${movie.release_date}</p>
-            <div class="d-flex, full-width, heigth align-items center">
+            <div class="align-items center">
             <img src="https://image.tmdb.org/t/p/w500${movie.poster_path ?? "NO IMAGE FOUND" }" class="poster-img" alt="poster-img">
             </div>
             ${movie.overview && `<p class="movie-card-description">${movie.overview}.</p>`}
