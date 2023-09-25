@@ -156,6 +156,7 @@ editMovieFormBtn.addEventListener("click", (e)=>{
             <div class="d-flex align-items-center justify-content-start gap-10 flex-wrap">
                 ${movie.categories && renderCategories(movie.categories)}
             </div>
+            <input type="hidden" value="${movie.id}">
             <button  class="delete-movie-btn">Delete Movie</button>
         `;
         // IF we had buttons in here that needed event listeners, we would do it here
@@ -215,14 +216,12 @@ editMovieFormBtn.addEventListener("click", (e)=>{
 
         deleteMovieBtn[i].addEventListener("click", async (e)=>{
 
-            let parent = document.getElementsByClassName("movie-card")
-
             console.log(e.target);
-            // deleteMovie(e)
-            console.log(e);
-            // getMovies()
+             deleteMovie(e.target.previousElementSibling.value)
+            console.log(e.target.previousElementSibling.value);
+             
 
-        })
+        });
 
     }
 
