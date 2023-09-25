@@ -104,7 +104,7 @@ ul.cat-tab-menu li span {
 /*}*/
 .movie-card-title {
 	font-size: 20px;
-	font-weight: bold;
+	font-weight: bolder;
 }
 .movie-card-year {
 	font-size: 14px;
@@ -119,13 +119,11 @@ ul.cat-tab-menu li span {
 .movie-card-description {
 	font-size: 14px;
 	font-weight: 400;
-	color: var(--dark-grey);
 	margin-bottom: 10px;
 	max-height: 65px;
 	overflow: hidden;
 	flex: 1 0 65px;
 }
-.movie-card-span,
 .movie-card-rating {
 	font-size: 14px;
 	font-weight: 400;
@@ -255,5 +253,14 @@ article img {
 /*}*/
 .poster-img-carousel{
 	width: 75vw;
+}
+.movie-card-description{
+	color: white;
+}
+.movie-card-span{
+	color: white;
+}
+.movie-card-rating{
+	color: white;
 }
 
