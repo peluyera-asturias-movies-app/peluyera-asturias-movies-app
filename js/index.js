@@ -103,26 +103,7 @@ window.addEventListener("click", (event) => {
 
 
 
-///////////////////////////// EDIT MOVIE
-let editMovieForm = document.getElementById("edit-movie-form");
 
-let editMovieFormBtn = document.getElementById("edit-form-submit-btn");
-
-let editMovieObj;
-
-editMovieFormBtn.addEventListener("click", (e)=>{
-    e.preventDefault();
-
-    editMovieObj = {
-        title: editMovieForm[0].value,
-        release_date: editMovieForm[1].value,
-        overview: editMovieForm[2].value
-    }
-    console.log(editMovieObj);
-    //FUNCTION TO PATCH MOVIE GOES HERE
-    //patchMovie();
-
-});
 
 
 
@@ -157,6 +138,7 @@ editMovieFormBtn.addEventListener("click", (e)=>{
                 ${movie.categories && renderCategories(movie.categories)}
             </div>
             <input type="hidden" value="${movie.id}">
+           
             <button  class="delete-movie-btn">Delete Movie</button>
         `;
         // IF we had buttons in here that needed event listeners, we would do it here
@@ -189,7 +171,7 @@ editMovieFormBtn.addEventListener("click", (e)=>{
     };
 
 
-
+/////////////////////ON LOAD///////////////////
     //// displays card on load
     const movies = await getMovies();
     console.log(movies);
@@ -208,7 +190,7 @@ editMovieFormBtn.addEventListener("click", (e)=>{
 
 
 
-    // NEED TO FINISH function to delete movie
+    // function to delete movie
 
     let deleteMovieBtn = document.getElementsByClassName("delete-movie-btn");
 
@@ -217,7 +199,7 @@ editMovieFormBtn.addEventListener("click", (e)=>{
         deleteMovieBtn[i].addEventListener("click", async (e)=>{
 
             console.log(e.target);
-             deleteMovie(e.target.previousElementSibling.value)
+            deleteMovie(e.target.previousElementSibling.value)
             console.log(e.target.previousElementSibling.value);
              
 
@@ -225,11 +207,32 @@ editMovieFormBtn.addEventListener("click", (e)=>{
 
     }
 
-    
-    
-    
-    
-    
+
+    ///////////////////////////// EDIT MOVIE
+    let editMovieForm = document.getElementById("edit-movie-form");
+
+    let editMovieFormBtn = document.getElementById("edit-form-submit-btn");
+
+    let editMovieObj;
+
+    editMovieFormBtn.addEventListener("click", (e)=>{
+        e.preventDefault();
+
+        editMovieObj = {
+            id: editMovieForm[0].value,
+            title: editMovieForm[1].value,
+            release_date: editMovieForm[2].value,
+            overview: editMovieForm[3].value
+        }
+        console.log(editMovieObj);
+        console.log(e);
+        //FUNCTION TO PATCH MOVIE GOES HERE
+        patchMovie(e.target.previousElementSibling.value);
+
+    });
+
+
+
 
 
 
