@@ -128,24 +128,6 @@
       "video": false,
       "vote_average": 7.9,
       "vote_count": 23599
-    },
-    {
-      "adult": false,
-      "backdrop_path": "/v4RBe9pdpPpHbNEoiA7UyABqV4P.jpg",
-      "genre_ids": [
-        18
-      ],
-      "id": 1137094,
-      "original_language": "es",
-      "original_title": "Las cosas indefinidas",
-      "overview": "Eva, a film editor, and her assistant Rami are working on a film about blind people. A melancholy reflection on cinema and images.",
-      "popularity": 1.852,
-      "poster_path": "/dlHIBQIFBwCjZqVxOVA74r9RLzv.jpg",
-      "release_date": "2023-07-06",
-      "title": "Undefined Things",
-      "video": false,
-      "vote_average": 8.818,
-      "vote_count": 11
     }
   ]
 }
