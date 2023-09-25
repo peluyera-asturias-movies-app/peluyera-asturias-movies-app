@@ -49,10 +49,11 @@ export const renderMovie = (movie, target) => {
             <div class="title-year">
             <div class=" align-items center">
             <img src="https://image.tmdb.org/t/p/w500${movie.poster_path ?? "NO IMAGE FOUND" }" class="poster-img" alt="poster-img">
-            </div>
-            <div class="movie-card-title">${movie.title}</div>
-            <p class="movie-card-year">${movie.release_date}</p></div>
+             <p class="movie-card-year">${movie.release_date}</p>
             ${movie.overview && `<p class="movie-card-description">${movie.overview}.</p>`}
+            </div>
+            </div>
+            </div>
             <div class="rating d-flex align-items-center justify-content-between">
                 <span class="movie-card-span">Rating</span>
                 <span class="movie-card-rating">${movie.vote_average.toFixed()}/10</span>
