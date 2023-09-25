@@ -2,7 +2,7 @@ import { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,sea
 import {renderModal, renderMovie, renderCategories, renderPoster} from "./renderFunctions.js";
 
 // variable for preloader
-let loader = document.getElementById("preloader");
+const loader = document.getElementById("preloader");
 // THIS IS FOR ADD A MOVIE BUTTON FORM
 // Get the modal and button elements
 const addMovieModal = document.getElementById("addMovieModal");
@@ -21,6 +21,7 @@ let addMovieFormrating = document.getElementById("rating").value;
 const addMovieBtn = document.getElementById("add-movie-btn");
 //variable to capture value of add movie form
 let newMovieObj;
+
 //event to Show the modal when the button is clicked
 addMovieButton.addEventListener("click", () => {
     addMovieModal.style.display = "block";
@@ -42,7 +43,7 @@ window.addEventListener("click", (event) => {
 
 // event to add movie to favorites when btn clicked
 addMovieBtn.addEventListener("click", (e)=>{
-    e.preventDefault()
+    e.preventDefault();
 
     newMovieObj = {
         title: addMovieForm[0].value,
@@ -55,7 +56,6 @@ addMovieBtn.addEventListener("click", (e)=>{
 });
 
 // function to delete movie
-
 let deleteMovieBtn = document.getElementsByClassName("delete-movie-btn");
 
 for (let i = 0; i < deleteMovieBtn.length; i++) {
@@ -63,7 +63,7 @@ for (let i = 0; i < deleteMovieBtn.length; i++) {
     deleteMovieBtn[i].addEventListener("click", async (e)=>{
 
         console.log(e.target);
-        deleteMovie(e.target.previousElementSibling.value)
+        deleteMovie(e.target.previousElementSibling.value);
         console.log(e.target.previousElementSibling.value);
 
 
