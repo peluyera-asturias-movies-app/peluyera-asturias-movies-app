@@ -1,17 +1,18 @@
-import { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList} from "../js/utils/movies.js"
+import { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList,showLoader,hideLoader} from "../js/utils/movies.js"
 
-// THIS IS FOR ADD A MOVIE BUTTON
+// THIS IS FOR ADD A MOVIE BUTTON FORM
 // Get the modal and button elements
 const addMovieModal = document.getElementById("addMovieModal");
+//button to open the add movie form
 const addMovieButton = document.getElementById("addMovieButton");
-const closeModal = document.getElementById("closeModal");
-
-// Show the modal when the button is clicked
+//event to Show the modal when the button is clicked
 addMovieButton.addEventListener("click", () => {
-    addMovieModal.style.display = "block";
+addMovieModal.style.display = "block";
 });
-
+//button to close modal form
+const closeModal = document.getElementById("closeModal");
 // Close the modal when the close button is clicked
+//event to close the add movie form
 closeModal.addEventListener("click", () => {
     addMovieModal.style.display = "none";
 });
@@ -23,15 +24,49 @@ window.addEventListener("click", (event) => {
     }
 });
 
-// Prevent the form from submitting (you can add your logic here)
-document.getElementById("movieForm").addEventListener("submit", (event) => {
-    event.preventDefault();
-    // Add your movie addition logic here
-    // For now, let's just close the modal
-    addMovieModal.style.display = "none";
-});
+//////////////////////////////// ADD MOVIE
 
-// // EDIT A MOVIE BUTTON
+//variable to capture value of add movie form
+let newMovieObj;
+
+// below 4 varialbes capture values from add movie form
+let addMovieForm = document.getElementById("movie-form")
+let addMovieFormTitle = document.getElementById("title").value;
+let addMovieFormrating = document.getElementById("rating").value;
+
+
+
+//button to submit the add movie form
+let addMovieBtn = document.getElementById("add-movie-btn");
+// event to add movie to favorites when btn clicked
+addMovieBtn.addEventListener("click", (e)=>{
+    e.preventDefault()
+
+    newMovieObj = {
+        title: addMovieForm[0].value,
+        vote_average: Number(addMovieForm[1].value)
+    };
+    console.log(newMovieObj);
+    postMovie(newMovieObj);
+
+
+});
+//////////////////////////////////////////////////
+
+
+
+
+
+
+//button to submit the search movie
+// let searchMovieBtn = document.getElementById("search-movie-btn");
+
+
+
+
+
+//////////////////////////// // EDIT MOVIE FORM
+
 // Function to display the edit modal with movie details
 // Get the modal and button elements
 const editMovieModal = document.getElementById("editMovieModal");
@@ -54,48 +89,53 @@ window.addEventListener("click", (event) => {
         editMovieModal.style.display = "none";
     }
 });
+/////////////////////////////////////////////////
 
-// Prevent the form from submitting (you can add your logic here)
-document.getElementById("movieForm-two").addEventListener("submit", (event) => {
-    event.preventDefault();
-    // Add your movie addition logic here
-    // For now, let's just close the modal
-    editMovieModal.style.display = "none";
+
+
+///////////////////////////// EDIT MOVIE
+let editMovieForm = document.getElementById("edit-movie-form");
+
+let editMovieFormBtn = document.getElementById("edit-form-submit-btn");
+
+let editMovieObj;
+
+editMovieFormBtn.addEventListener("click", (e)=>{
+    e.preventDefault();
+
+    editMovieObj = {
+        title: editMovieForm[0].value,
+        release_date: editMovieForm[1].value,
+        overview: editMovieForm[2].value
+    }
+    console.log(editMovieObj);
+    //FUNCTION TO PATCH MOVIE GOES HERE
+    //patchMovie();
+
 });
+
+
 
 
 
 //////// MAIN METHOD
 (async () => {
+    // variable for preloader
+    let loader = document.getElementById("preloader")
 
-    // const preloader = document.querySelector('.preloader');
-    //
-    // const fadeEffect = setInterval(() => {
-    //     // if we don't set opacity 1 in CSS, then   //it will be equaled to "", that's why we   // check it
-    //     if (!preloader.style.opacity) {
-    //         preloader.style.opacity = 3;
-    //     }
-    //     if (preloader.style.opacity > 0) {
-    //         preloader.style.opacity -= 0.5;
-    //     } else {
-    //         clearInterval(fadeEffect);
-    //     }
-    // }, 400);
+
+    // window.addEventListener("load",preLoader)
 
 
 
-    const renderCategories = (categories = []) => {
-        // create a single HTML string made up of all the categories
-        const categoriesHTML = categories?.map((category) => `<span class="movie-card-tag">${category}</span>`).join("");
-        return categoriesHTML;
-    };
+    // function creates and adds moive card to DOM
     const renderMovie = (movie, target) => {
         const movieCard = document.createElement("article");
         movieCard.classList.add("movie-card");
         movieCard.innerHTML = `
-            <div class="movie-card-title">${movie.title ?? "movie title goes here"}</div>
-            <p class="movie-card-year">${movie.release_date ?? "Movie year goes here"}</p>
-            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="poster-img" alt="poster-img">
+            <div class="movie-card-title">${movie.title}</div>
+            <p class="movie-card-year">${movie.release_date}</p>
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path ?? "NO IMAGE FOUND" }" class="poster-img" alt="poster-img">
             ${movie.overview && `<p class="movie-card-description">${movie.overview}.</p>`}
             <div class="d-flex align-items-center justify-content-between">
                 <span class="movie-card-span">Rating</span>
@@ -105,6 +145,7 @@ document.getElementById("movieForm-two").addEventListener("submit", (event) => {
             <div class="d-flex align-items-center justify-content-start gap-10 flex-wrap">
                 ${movie.categories && renderCategories(movie.categories)}
             </div>
+            <button  class="delete-movie-btn">Delete Movie</button>
         `;
         // IF we had buttons in here that needed event listeners, we would do it here
         // const editBtn = bookCard.querySelector("button");
@@ -114,22 +155,71 @@ document.getElementById("movieForm-two").addEventListener("submit", (event) => {
         // THEN append it into the DOM
         target.appendChild(movieCard);
     };
+    // function assings category based on data
+    const renderCategories = (categories = []) => {
+        // create a single HTML string made up of all the categories
+        const categoriesHTML = categories?.map((category) => `<span class="movie-card-tag">${category}</span>`).join("");
+        return categoriesHTML;
+    };
 
 
-    ////
+    // function to display movie posters on carousel
+    const renderPoster = (movie, target) => {
+        const posterCard = document.createElement("div");
+        posterCard.classList.add("carousel-item");
+        posterCard.innerHTML = `
+
+           <img src="https://image.tmdb.org/t/p/w500${movie.backdrop_path}" class="poster-img" alt="poster-img">
+            
+        `;
+
+        target.appendChild(posterCard);
+    };
+
+
+
+    //// displays card on load
     const movies = await getMovies();
     console.log(movies);
     for (let movie of movies) {
         const target = document.querySelector(".movies-grid");
         renderMovie(movie, target);
+    };
+
+
+    ///// displays lates movies carousel
+    const posters = await latestMoviesList();
+    for (let poster of posters.results) {
+        const target = document.querySelector("#carousel");
+        renderPoster(poster, target);
+    };
+
+
+
+    // NEED TO FINISH function to delete movie
+
+    let deleteMovieBtn = document.getElementsByClassName("delete-movie-btn");
+
+    for (let i = 0; i < deleteMovieBtn.length; i++) {
+
+        deleteMovieBtn[i].addEventListener("click", async (e)=>{
+
+            let parent = document.getElementsByClassName("movie-card")
+
+            console.log(e.target);
+            // deleteMovie(e)
+            console.log(e);
+            // getMovies()
+
+        })
 
     }
 
-
-let searchResult = await searchMoviesTMDB(NaN)
-
-let movieToAdd = searchResult.results[0]
-
+    
+    
+    
+    
+    
 
 
 
@@ -137,17 +227,5 @@ let movieToAdd = searchResult.results[0]
 
 })();
 
-/// build form to add movie
 
-// build option to get all movies
-
-// build input to search for movie
-
-// build input to delete movie
-
-// build input to patch movie
-
-
-// movie parameters to grab
-// title, id, genre, overview, poster,date
 // poster https://image.tmdb.org/t/p/w500 + poster path
