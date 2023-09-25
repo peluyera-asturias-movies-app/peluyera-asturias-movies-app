@@ -22,7 +22,7 @@ const latestMoviesList = async () =>{
         method: 'GET',
         headers: {
             accept: 'application/json',
-            // Authorization: `Bearer ${TMDB_API_KEY}`
+            Authorization: `Bearer ${TMDB_API_KEY}`
         }
     };
 
@@ -58,7 +58,9 @@ const getMovies = async () => {
             "Content-Type": "application/json",
         },
     };
+    showLoader();
     const response = await fetch(url, options);
+    hideLoader()
     const movies= await response.json();
     // console.log(movies);
     return movies;
@@ -161,10 +163,21 @@ const patchMovie = async (movie) => {
 
 
 
+////////////////////////PRE LOADER FUNCTIONS
+let loader = document.getElementById("preloader")
+//
+const showLoader = ()=>{
+    loader.classList.add("show");
+}
+
+//function hides preloader
+const hideLoader = () =>{
+    loader.classList.remove("show");
+}
 
 
 
 
 
 
-export { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList};
+export { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList,showLoader,hideLoader};
