@@ -107,8 +107,8 @@ ul.cat-tab-menu li span {
 	margin-bottom: 10px;
 }
 .movie-card img {
-
-	object-fit: fill;
+	max-width: 15rem;
+	object-fit: scale-down;
 }
 .movie-card-description {
 	font-size: 14px;
