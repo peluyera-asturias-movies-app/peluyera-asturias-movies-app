@@ -46,11 +46,12 @@ export const renderMovie = (movie, target) => {
     const movieCard = document.createElement("article");
     movieCard.classList.add("movie-card");
     movieCard.innerHTML = `
-            <div class="movie-card-title">${movie.title}</div>
-            <p class="movie-card-year">${movie.release_date}</p>
-            <div class="align-items center">
+            <div class="title-year">
+            <div class=" align-items center">
             <img src="https://image.tmdb.org/t/p/w500${movie.poster_path ?? "NO IMAGE FOUND" }" class="poster-img" alt="poster-img">
             </div>
+            <div class="movie-card-title">${movie.title}</div>
+            <p class="movie-card-year">${movie.release_date}</p></div>
             ${movie.overview && `<p class="movie-card-description">${movie.overview}.</p>`}
             <div class="d-flex align-items-center justify-content-between">
                 <span class="movie-card-span">Rating</span>
@@ -63,6 +64,7 @@ export const renderMovie = (movie, target) => {
             <input type="hidden" value="${movie.id}">
             <button  class="edit-movie-btn" data-bs-toggle="modal" data-bs-target="#editModal${movie.id}">Edit Movie</button>
             <button  class="delete-movie-btn">Delete Movie</button>
+            
         `;
     // IF we had buttons in here that needed event listeners, we would do it here
     const editBtn = movieCard.querySelector('.edit-movie-btn');
@@ -99,7 +101,7 @@ export const renderPoster = (movie, target) => {
     posterCard.classList.add("carousel-item");
     posterCard.innerHTML = `
 
-           <img src="https://image.tmdb.org/t/p/w500${movie.backdrop_path}" class="poster-img" alt="poster-img">
+           <img src="https://image.tmdb.org/t/p/w500${movie.backdrop_path}" class="poster-img-carousel" alt="poster-img">
             
         `;
 
