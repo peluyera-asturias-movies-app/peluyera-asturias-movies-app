@@ -137,7 +137,7 @@ ul.cat-tab-menu li span {
 	border-radius: 8px;
 	background-color: var(--bg-color);
 }
-button.delete-movie-btn {
+button {
 	border-radius: 25px;
 }
 .btn-cta {
