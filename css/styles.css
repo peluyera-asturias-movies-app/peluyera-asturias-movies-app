@@ -85,9 +85,11 @@ ul.cat-tab-menu li span {
 .movie-card {
 	/*min-height: 272px;*/
 	border-radius: 20px;
-	background-color: #fff;
-	width: calc(33.333% - 20px);
-	padding: 25px;
+	color: white;
+	/*background-color: #fff;*/
+	width: 460px;
+	height: 1017px;
+	/*padding: 25px;*/
 	display: flex;
 	flex-direction: column;
 	transition: 2s;
@@ -95,7 +97,11 @@ ul.cat-tab-menu li span {
 .movie-card:hover {
 	transform: scale(1.05);
 }
-
+/*.movie-card-title{*/
+/*	display: flex;*/
+/*	position: relative;*/
+/*	top: 100px;*/
+/*}*/
 .movie-card-title {
 	font-size: 20px;
 	font-weight: bold;
@@ -103,13 +109,13 @@ ul.cat-tab-menu li span {
 .movie-card-year {
 	font-size: 14px;
 	font-weight: 400;
-	color: var(--dark-grey);
+	color: white;
 	margin-bottom: 10px;
 }
-.movie-card img {
-	max-width: 15rem;
-	object-fit: scale-down;
-}
+/*.movie-card img {*/
+/*	max-width: 15rem;*/
+/*	object-fit: scale-down;*/
+/*}*/
 .movie-card-description {
 	font-size: 14px;
 	font-weight: 400;
@@ -237,10 +243,17 @@ input[type="search"]:focus {
 	position: relative;
 	z-index: 1;
 }
-.poster-img{
-	display: flex;
-	position: relative;
-	/*flex-grow: 2 0 0;*/
-	/*width: 100px;*/
+article img {
+	object-fit: cover;
+}
+.poster-img {
+	width: 460px;
+	border-radius: 30px;
+}
+/*.carousel-item{*/
+/*	width: 100%;*/
+/*}*/
+.poster-img-carousel{
+	width: 75vw;
 }
 
