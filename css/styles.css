@@ -238,3 +238,89 @@ form.search-element h4 {
 .hide-search-list {
 	display: none;
 }
+.edit-delete-group{
+	display: flex;
+	justify-content: space-between;
+}
+/*.edit-movie-btn{*/
+/*	width: 250px;*/
+/*}*/
+/*.delete-movie-btn{*/
+/*	width: 250px;*/
+/*}*/
+.edit-movie-btn {
+	border-radius: 4px;
+	background-color: #f4511e;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 20px;
+	/*padding: 20px;*/
+	width: 200px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.edit-movie-btn span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.edit-movie-btn span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+.edit-movie-btn:hover span {
+	padding-right: 25px;
+}
+
+.edit-movie-btn:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+.delete-movie-btn {
+	border-radius: 4px;
+	background-color: #f4511e;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 20px;
+	/*padding: 20px;*/
+	width: 200px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.delete-movie-btn span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.delete-movie-btn span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+.delete-movie-btn:hover span {
+	padding-right: 25px;
+}
+
+.delete-movie-btn:hover span:after {
+	opacity: 1;
+	right: 0;
+}
