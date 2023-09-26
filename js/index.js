@@ -15,7 +15,7 @@ const closeModal = document.getElementById("closeModal");
 const searchMovieBtn = document.getElementById("search-movie-btn");
 //captures value of search input
 let searchInput = document.getElementById("search-movie-input").value;
-// below 4 varialbes capture values from add movie form
+// below 4 variables capture values from add movie form
 const addMovieForm = document.getElementById("movie-form");
 let addMovieFormTitle = document.getElementById("title").value;
 let addMovieFormrating = document.getElementById("rating").value;
@@ -84,7 +84,6 @@ for (let i = 0; i < deleteMovieBtn.length; i++) {
 //     }
 // }
 
-
 //////////////////////////////////////////////////
 //////// MAIN METHOD
 (async () => {
@@ -100,7 +99,7 @@ for (let i = 0; i < deleteMovieBtn.length; i++) {
     };
 
 
-    ///// displays lates movies carousel
+    ///// displays latest movies carousel
     const posters = await latestMoviesList();
     for (let poster of posters.results) {
         const target = document.querySelector("#carousel");
@@ -132,13 +131,5 @@ function displayMovieList (movies) {
 
     }
 }
-
-
-
-
-
-
 })();
-
-
 // poster https://image.tmdb.org/t/p/w500 + poster path
