@@ -5,6 +5,7 @@ export const renderModal = (movie) => {
 
     const modal = document.createElement('div');
     modal.classList.add('custom-modal');
+
     modal.innerHTML = `
         <div class="custom-modal-bg"></div>
         <div class="custom-modal-content">
@@ -53,6 +54,7 @@ export const renderModal = (movie) => {
 export const renderMovie = (movie, target) => {
     const movieCard = document.createElement("article");
     movieCard.classList.add("movie-card");
+
     movieCard.innerHTML = `
             <div class="title-year">
             <div class=" align-items center">
@@ -105,6 +107,7 @@ export const renderCategories = (categories = []) => {
 export const renderPoster = (movie, target) => {
     const posterCard = document.createElement("div");
     posterCard.classList.add("carousel-item");
+
     posterCard.innerHTML = `
 
            <img src="https://image.tmdb.org/t/p/w500${movie.backdrop_path}" class="poster-img-carousel" alt="poster-img">

@@ -13,6 +13,8 @@ const closeModal = document.getElementById("closeModal");
 
 //button to search movies from API
 const searchMovieBtn = document.getElementById("search-movie-btn");
+//captures value of search input
+let searchInput = document.getElementById("search-movie-input").value;
 // below 4 varialbes capture values from add movie form
 const addMovieForm = document.getElementById("movie-form");
 let addMovieFormTitle = document.getElementById("title").value;
@@ -71,13 +73,17 @@ for (let i = 0; i < deleteMovieBtn.length; i++) {
 
 };
 
-// even listener to search movies from API
-searchMovieBtn.addEventListener("click",(e)=>{
-    e.preventDefault()
-    // variable captures user input to be passed to the searchMoviesTMDB function
-    let searchInput = document.getElementById("search-movie-input").value;
-    getMovieByTitleOMDB(searchInput);
-});
+// const searchList = document.getElementById("search-list")
+// function findMovie () {
+//     let searchTerm = document.getElementById("search-movie-input").value.trim();
+//     if (searchTerm.length > 0){
+//         searchList.classList.remove("hide-search-list");
+//         getMovieByTitleOMDB(searchTerm);
+//     } else {
+//         searchList.classList.add("hide-search-list")
+//     }
+// }
+
 
 //////////////////////////////////////////////////
 //////// MAIN METHOD
@@ -101,9 +107,31 @@ searchMovieBtn.addEventListener("click",(e)=>{
         renderPoster(poster, target);
     };
 
+function displayMovieList (movies) {
+    searchList.innerHTML = "";
+    for (let i = 0; i < movies.length; i++) {
+        let movieListItem = document.createElement("div");
+        movieListItem.dataset.id = movies[i].imdbID;
+        movieListItem.classList.add("search-list-item");
+        if(movie[i] !== "N/A") {
+            moviePoster = movie[i].poster;
+        } else {
+            moviePoster = "img/no-image.png"
+        }
 
+        searchList.innerHTML = `
+        <div class="search-item-thumbnail">
+            <img src=>
+        </div>
+        <div class="search-item-info">
+            <h4>${movies[i].title}</h4>
+            <p>${movies[i].year}</p>
+        </div>
+        ;`
+        searchList.appendChild(movieListItem);
 
-
+    }
+}
 
 
 

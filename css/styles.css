@@ -2,22 +2,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
 :root {
-	--primary-color: #769e48;
-	--grey: #e8e9eb;
-	--dark-grey: #595f69;
-	--bg-color: #f8f8f8;
+	--md-dark: #1d1d1d;
+	--dark-color: #171717;
+	--light-dark: #292929;
+	--primary-gradient:linear-gradient(155deg,#00feba, #5b548a);
+	margin: unset;
+
 }
 body {
 	font-family: "moolin";
 	font-size: 16px;
 	line-height: 1.5;
-	color: #333;
+	color: red;
 	height: 100%;
-	background-color: #333333;
+	background-color: var(--dark-color);
 }
 
 header.container {
 	padding: 20px 0;
+	max-height: 180px;
 }
 .row-logo{
 	text-align: center;
@@ -31,10 +34,11 @@ header.container {
 	color: red;
 	font-weight: 700;
 }
+.container.cat-tags {
 
-.container.cat-tags .column {
-	border-bottom: 1px solid #e8e9eb;
+	margin: unset !important;
 }
+
 #movies-grid {
 	display: flex;
 	width: 100%;
@@ -44,13 +48,12 @@ header.container {
 	justify-content: start;
 	margin: 20px 0;
 }
-
 .movie-card {
 	/*min-height: 272px;*/
 	border-radius: 20px;
 	color: white;
 	/*background-color: #fff;*/
-	width: 460px;
+	width: calc(33.333% - 20px);
 	height: 1017px;
 	/*padding: 25px;*/
 	display: flex;
@@ -60,10 +63,7 @@ header.container {
 .movie-card:hover {
 	transform: scale(1.05);
 }
-.movie-card-title {
-	font-size: 20px;
-	font-weight: bolder;
-}
+
 .movie-card-year {
 	font-size: 14px;
 	font-weight: 400;
@@ -87,19 +87,9 @@ header.container {
 	width: 100%;
 	margin-bottom: 10px;
 }
-.movie-card-tag {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 5px 20px;
-	border-radius: 8px;
-	background-color: var(--bg-color);
-}
 button {
 	border-radius: 25px;
-}
-#search-movie-input {
-	border-radius: 25px;
+	max-width: 250px;
 }
 /*loading*/
 #preloader {
@@ -114,12 +104,10 @@ button {
 #preloader.show {
 	display: block;
 }
-
 .page-content {
 	max-width: 768px;
 	margin: 0 auto;
 }
-
 .custom-modal {
 	display: flex;
 	position: fixed;
@@ -150,17 +138,16 @@ button {
 	position: relative;
 	z-index: 1;
 }
-
 article img {
-	object-fit: cover;
+	margin-right: unset;
+	align-self: center;
+	width: 100%;
+	display: block;
 }
 .poster-img {
 	width: 460px;
 	border-radius: 30px;
 }
-/*.carousel-item{*/
-/*	width: 100%;*/
-/*}*/
 .poster-img-carousel{
 	border-radius: 25px;
 }
@@ -173,24 +160,81 @@ article img {
 .movie-card-rating{
 	color: white;
 }
-/*Didn't look right on images due to poster titles*/
-/*.parent {*/
-/*	position: relative;*/
-/*	max-width: 800px;*/
-/*	margin: 0 auto;*/
-/*	box-sizing: border-box;*/
-/*}*/
-/*.parent img {*/
-/*	vertical-align: middle;*/
-/*}*/
-/*.parent .text {*/
-/*	position: relative;*/
-/*	bottom: 260px;*/
-/*	background: rgb(0, 0, 0);!* Fallback color *!*/
-/*	background: rgba(0, 0, 0, 0.5);!* Black background with opacity *!*/
-/*	color: #ffffff;*/
-/*	width: 100%;*/
-/*	height: 300px;*/
-/*	!*padding: 50px;*!*/
-/*}*/
+form.search-element {
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+	flex-direction: column;
+}
+form.search-element h4 {
+	align-self: center;
+	margin-right: 1rem;
+	font-size: 2rem;
+	color: #fff;
+	font-weight: 500;
+	margin-bottom: 1.5rem;
+}
+#search-movie-input {
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	width: 350px;
+	padding: 1rem 2rem;
+	font-size: 1.4rem;
+	border: none;
+	outline: none;
+	color: var(--light-dark);
+}
+.search-list {
+	position: absolute;
+	max-height: 500px;
+	overflow-y: scroll;
+	right: 0;
+	top: 8%;
+	z-index: 10;
+}
+.search-list .search-list-item {
+	background-color: var(--light-dark);
+	padding: .5rem;
+	border-bottom: 1px solid var(--dark-color);
+	width: calc(350px - 8px);
+	color: #fff;
+	cursor: pointer;
+	transition: background-color 200ms ease;
+}
+.search-list .search-list-item:hover {
+	background-color: #1f1f1f;
+}
+.search-list-item {
+	display: flex;
+	align-items: center;
+}
+.search-item-thumbnail img {
+	width: 40px;
+	margin-right: 1rem;
+}
+.search-item-info {
+	font-weight: 600;
+	font-size: 1rem;
+}
+.search-item-info p {
+	font-size: 0.8rem;
+	margin-top: 0.5rem;
+	font-weight: 600;
+	opacity: 0.6;
+}
 
+.search-list::-webkit-scrollbar {
+	width: 8px;
+}
+.search-list::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.search-list::-webkit-scrollbar-thumb {
+	background: var(red);
+	outline: none;
+	border-radius: 10px;
+}
+
+.hide-search-list {
+	display: none;
+}
