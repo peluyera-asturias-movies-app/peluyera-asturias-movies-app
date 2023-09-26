@@ -14,18 +14,39 @@
 
 <div id="preloader"></div>
 <div class="page-wrapper">
-    <header class="container">
-        <div class="row-logo ">
-            <div class="column-logo flex-shrink">
+    <header class="container container-fluid me-0">
+        <div class="row flex-grow">
+            <div class="col column-logo flex-grow w-100">
                 <div class="logo">
                     <span>Cruzzin P & Co.</span> Movies
-
                 </div>
+            </div>
+            <div class="col d-flex justify-content-between">
+
+                <button id="addMovieButton">Add Movie</button>
+
+                <form class="search-element">
+                    <input id="search-movie-input" autocomplete="off" placeholder="Search Favorites.." onkeyup="findMovie()">
+                    <div id="search-list" class="search-list">
+<!--                                SEARCH LIST HERE-->
+                        <div class="search-list-item hide-search-list">
+                            <div class="search-item-thumbnail">
+                                <img src="img/preloder.webp">
+                            </div>
+                            <div class="search-item-info">
+                                <h4>Coffee Movie</h4>
+                                <p>2023</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
             </div>
         </div>
     </header>
-        <section class="container cat-tags">
-            <div class="row" style="width: 100%;">
+        <section class="container cat-tags w-100">
+            <div class="row w-100">
 
                 <div class="column d-flex justify-content-end">
 
@@ -47,12 +68,9 @@
                             </form>
                         </div>
                     </div>
-                <form>
-                    <input id="search-movie-input" placeholder="Search Favorites..">
-                    <button type="submit" id="search-movie-btn">Search</button>
-                </form>
 
-                <button id="addMovieButton">Add Movie</button>
+
+
             </div>
 
 
@@ -64,12 +82,21 @@
 
                         <!-- MOVIE POSTERS GO HERE  -->
                 </div>
+                <div class="carousel-item active">
+
+                    <!-- MOVIE POSTERS GO HERE  -->
+                </div>
+                <div class="carousel-item active">
+
+                    <!-- MOVIE POSTERS GO HERE  -->
+                </div>
+
             </div>
         </div>
     </section>
     <br>
         <div class="row-card">
-            <div id="movies-grid" class="movies-grid">
+            <div id="movies-grid" class="movies-grid d-flex">
 
                     <!--   MOVIE CARDS GO HERE  -->
 
@@ -82,7 +109,32 @@
 
 <!-- MAIN -->
 <script type="module" src="js/index.js"></script>
+<script>
+    const getMovieByTitleOMDB = async (title) => {
+        const url = `https://www.omdbapi.com/?plot=full&s=${title}&page=1&type=movie&apikey=96b463c9`;
+        const options = {
+            method: "GET",
+
+        };
+        const response = await fetch(url, options);
+        const movie = await response.json();
+        console.log(movie);
+        return movie;
+    };
+
+    const searchList = document.getElementById("search-list")
+    function findMovie () {
+        let searchTerm = document.getElementById("search-movie-input").value.trim();
+        if (searchTerm.length > 0){
+            searchList.classList.remove("hide-search-list");
+            getMovieByTitleOMDB(searchTerm);
+        } else {
+            searchList.classList.add("hide-search-list")
+        }
+    }
+
+</script>
 
 
 
-</body>
+</body>ß
