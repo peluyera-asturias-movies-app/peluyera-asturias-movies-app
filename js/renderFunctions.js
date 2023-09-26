@@ -1,4 +1,4 @@
-import { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList,showLoader,hideLoader} from "./utils/movies.js"
+import { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList,showLoader,hideLoader,getMoviesNoLoader} from "./utils/movies.js"
 
 // function creates and adds moive card to DOM
 export const renderModal = (movie) => {
@@ -33,12 +33,32 @@ export const renderModal = (movie) => {
         }
 
         const target = document.querySelector(".movies-grid");
-            let updatedMovies = await getMovies();
-            await patchMovie(movieObj);
-            modal.remove();
+
+
+
+        await patchMovie(movieObj).then(function () {
+
+                    getMoviesNoLoader().then((movies) =>{
+
+                        const target = document.querySelector(".movies-grid");
+                        console.log(target);
+                        console.log(movies);
+                        target.innerHTML = "";
+                        for (let movie of movies) {
+                            console.log(movie);
+
+                            renderMovie(movie, target);
+
+                        };
+                        modal.remove();
+                        console.log(movies);
+                });
+            })
+
+
             ///need to fix to show updated card
             //make a copy of getMovies function without the preloder
-            // renderMovie(updatedMovies,target);
+
 
 
     });
@@ -54,11 +74,11 @@ export const renderModal = (movie) => {
 export const renderMovie = (movie, target) => {
     const movieCard = document.createElement("article");
     movieCard.classList.add("movie-card");
-
+    // console.log(movie);
     movieCard.innerHTML = `
             <div class="title-year">
             <div class=" align-items center">
-            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path ?? "NO IMAGE FOUND" }" class="poster-img" alt="poster-img">
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="poster-img" alt="poster-img">
              <p class="movie-card-year">${movie.release_date}</p>
             ${movie.overview && `<p class="movie-card-description">${movie.overview}.</p>`}
             </div>
@@ -75,7 +95,7 @@ export const renderMovie = (movie, target) => {
             <button  class="delete-movie-btn"><span>Delete Movie</span></button></div>
             
         `;
-    // IF we had buttons in here that needed event listeners, we would do it here
+
     const editBtn = movieCard.querySelector('.edit-movie-btn');
     editBtn.addEventListener('click', ()=>{
         renderModal(movie);
@@ -89,11 +109,7 @@ export const renderMovie = (movie, target) => {
             console.log(e);
         }
     });
-    // const editBtn = bookCard.querySelector("button");
-    // editBtn.addEventListener("click", async () => {
-    //     /// DO THE THANG!
-    // });
-    // THEN append it into the DOM
+
     target.appendChild(movieCard);
 };
 

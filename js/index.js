@@ -107,31 +107,31 @@ for (let i = 0; i < deleteMovieBtn.length; i++) {
         renderPoster(poster, target);
     };
 
-function displayMovieList (movies) {
-    searchList.innerHTML = "";
-    for (let i = 0; i < movies.length; i++) {
-        let movieListItem = document.createElement("div");
-        movieListItem.dataset.id = movies[i].imdbID;
-        movieListItem.classList.add("search-list-item");
-        if(movie[i] !== "N/A") {
-            moviePoster = movie[i].poster;
-        } else {
-            moviePoster = "img/no-image.png"
-        }
-
-        searchList.innerHTML = `
-        <div class="search-item-thumbnail">
-            <img src=>
-        </div>
-        <div class="search-item-info">
-            <h4>${movies[i].title}</h4>
-            <p>${movies[i].year}</p>
-        </div>
-        ;`
-        searchList.appendChild(movieListItem);
-
-    }
-}
+// function displayMovieList (movies) {
+//     searchList.innerHTML = "";
+//     for (let i = 0; i < movies.length; i++) {
+//         let movieListItem = document.createElement("div");
+//         movieListItem.dataset.id = movies[i].imdbID;
+//         movieListItem.classList.add("search-list-item");
+//         if(movie[i] !== "N/A") {
+//             moviePoster = movie[i].poster;
+//         } else {
+//             moviePoster = "img/no-image.png"
+//         }
+//
+//         searchList.innerHTML = `
+//         <div class="search-item-thumbnail">
+//             <img src=>
+//         </div>
+//         <div class="search-item-info">
+//             <h4>${movies[i].title}</h4>
+//             <p>${movies[i].year}</p>
+//         </div>
+//         ;`
+//         searchList.appendChild(movieListItem);
+//
+//     }
+// }
 
 
 
