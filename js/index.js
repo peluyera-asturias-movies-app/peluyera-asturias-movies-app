@@ -1,4 +1,4 @@
-import { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList,showLoader,hideLoader} from "./utils/movies.js"
+import { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList,showLoader,hideLoader,getMoviesNoLoader} from "./utils/movies.js"
 import {renderModal, renderMovie, renderCategories, renderPoster} from "./renderFunctions.js";
 
 // variable for preloader
@@ -47,15 +47,38 @@ window.addEventListener("click", (event) => {
 addMovieBtn.addEventListener("click", (e)=>{
     e.preventDefault();
 
+    const modal = document.getElementById("addMovieModal");
     newMovieObj = {
         title: addMovieForm[0].value,
-        vote_average: Number(addMovieForm[1].value)
+        release_date: addMovieForm[1].value,
+        overview: addMovieForm[2].value,
+        vote_average: Number(addMovieForm[3].value)
     };
     console.log(newMovieObj);
-    postMovie(newMovieObj);
+    
+    postMovie(newMovieObj).then(function (){
 
+        getMoviesNoLoader().then((movies) =>{
+    
+            const target = document.querySelector(".movies-grid");
+            console.log(target);
+            console.log(movies);
+            target.innerHTML = "";
+            for (let movie of movies) {
+                console.log(movie);
+    
+                renderMovie(movie, target);
 
+            };
+            modal.remove();
+        });
+    });
+    
 });
+
+
+
+
 
 // function to delete movie
 let deleteMovieBtn = document.getElementsByClassName("delete-movie-btn");

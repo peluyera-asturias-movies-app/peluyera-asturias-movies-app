@@ -31,34 +31,28 @@ export const renderModal = (movie) => {
             id: movie.id,
             overview: newDescValue
         }
-
-        const target = document.querySelector(".movies-grid");
-
-
+        
 
         await patchMovie(movieObj).then(function () {
 
-                    getMoviesNoLoader().then((movies) =>{
+            getMoviesNoLoader().then((movies) =>{
+    
+                const target = document.querySelector(".movies-grid");
+                console.log(target);
+                console.log(movies);
+                target.innerHTML = "";
+                for (let movie of movies) {
+                    console.log(movie);
+    
+                    renderMovie(movie, target);
+    
+                };
+                modal.remove();
+                console.log(movies);
+            });
+        });
 
-                        const target = document.querySelector(".movies-grid");
-                        console.log(target);
-                        console.log(movies);
-                        target.innerHTML = "";
-                        for (let movie of movies) {
-                            console.log(movie);
-
-                            renderMovie(movie, target);
-
-                        };
-                        modal.remove();
-                        console.log(movies);
-                });
-            })
-
-
-            ///need to fix to show updated card
-
-
+        
     });
 
     closeBtn.addEventListener('click', ()=>{
