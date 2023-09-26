@@ -353,7 +353,7 @@ form.search-element h4 {
 /*Description Box styling*/
 textarea {
 	width: 200px;
-	height: 30px;
+	height: 200px;
 	/*padding: 12px 20px;*/
 	box-sizing: border-box;
 	border: 2px solid #ccc;
