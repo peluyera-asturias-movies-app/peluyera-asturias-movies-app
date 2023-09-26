@@ -15,7 +15,7 @@ const closeModal = document.getElementById("closeModal");
 const searchMovieBtn = document.getElementById("search-movie-btn");
 //captures value of search input
 let searchInput = document.getElementById("search-movie-input").value;
-// below 4 varialbes capture values from add movie form
+// below 4 variables capture values from add movie form
 const addMovieForm = document.getElementById("movie-form");
 let addMovieFormTitle = document.getElementById("title").value;
 let addMovieFormrating = document.getElementById("rating").value;
@@ -84,7 +84,6 @@ for (let i = 0; i < deleteMovieBtn.length; i++) {
 //     }
 // }
 
-
 //////////////////////////////////////////////////
 //////// MAIN METHOD
 (async () => {
@@ -100,45 +99,13 @@ for (let i = 0; i < deleteMovieBtn.length; i++) {
     };
 
 
-    ///// displays lates movies carousel
+    ///// displays latest movies carousel
     const posters = await latestMoviesList();
     for (let poster of posters.results) {
         const target = document.querySelector("#carousel");
         renderPoster(poster, target);
     };
 
-// function displayMovieList (movies) {
-//     searchList.innerHTML = "";
-//     for (let i = 0; i < movies.length; i++) {
-//         let movieListItem = document.createElement("div");
-//         movieListItem.dataset.id = movies[i].imdbID;
-//         movieListItem.classList.add("search-list-item");
-//         if(movie[i] !== "N/A") {
-//             moviePoster = movie[i].poster;
-//         } else {
-//             moviePoster = "img/no-image.png"
-//         }
-//
-//         searchList.innerHTML = `
-//         <div class="search-item-thumbnail">
-//             <img src=>
-//         </div>
-//         <div class="search-item-info">
-//             <h4>${movies[i].title}</h4>
-//             <p>${movies[i].year}</p>
-//         </div>
-//         ;`
-//         searchList.appendChild(movieListItem);
-//
-//     }
-// }
-
-
-
-
-
 
 })();
-
-
 // poster https://image.tmdb.org/t/p/w500 + poster path

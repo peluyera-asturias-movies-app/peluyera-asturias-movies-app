@@ -1,6 +1,6 @@
 import { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList,showLoader,hideLoader,getMoviesNoLoader} from "./utils/movies.js"
 
-// function creates and adds moive card to DOM
+// Function creates and adds movie card to DOM
 export const renderModal = (movie) => {
 
     const modal = document.createElement('div');
@@ -57,8 +57,6 @@ export const renderModal = (movie) => {
 
 
             ///need to fix to show updated card
-            //make a copy of getMovies function without the preloder
-
 
 
     });
@@ -113,14 +111,14 @@ export const renderMovie = (movie, target) => {
     target.appendChild(movieCard);
 };
 
-// function assings category based on data
+// Function accessing category based on data
 export const renderCategories = (categories = []) => {
     // create a single HTML string made up of all the categories
     const categoriesHTML = categories?.map((category) => `<span class="movie-card-tag">${category}</span>`).join("");
     return categoriesHTML;
 };
 
-// function to display movie posters on carousel
+// Function to display movie posters on carousel
 export const renderPoster = (movie, target) => {
     const posterCard = document.createElement("div");
     posterCard.classList.add("carousel-item");
@@ -130,7 +128,5 @@ export const renderPoster = (movie, target) => {
            <img src="https://image.tmdb.org/t/p/w500${movie.backdrop_path}" class="poster-img-carousel" alt="poster-img">
             
         `;
-
     target.appendChild(posterCard);
 };
-
