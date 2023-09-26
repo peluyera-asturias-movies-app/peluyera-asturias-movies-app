@@ -48,6 +48,19 @@ const getMovieByTitleOMDB = async (title) => {
     console.log(movie);
     return movie;
 };
+const getMoviesNoLoader = async () => {
+    const url = "http://localhost:3000/movies";
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    };
+    const response = await fetch(url, options);
+    const movies= await response.json();
+    // console.log(movies);
+    return movies;
+};
 
 // Function gets all movies saved in favorites
 const getMovies = async () => {
@@ -60,13 +73,13 @@ const getMovies = async () => {
     };
     showLoader();
     const response = await fetch(url, options);
-    hideLoader()
+    hideLoader();
     const movies= await response.json();
     // console.log(movies);
     return movies;
 };
 
-// Function gets movie from favorites by id
+
 const getMovieById = async (id) => {
     const url = `http://localhost:3000/movies/${id}`;
     const options = {
@@ -175,4 +188,12 @@ const hideLoader = () =>{
     loader.classList.remove("show");
 }
 
-export { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList,showLoader,hideLoader};
+
+
+
+
+
+
+export { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList,showLoader,hideLoader,getMoviesNoLoader};
+
+
