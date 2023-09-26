@@ -70,8 +70,9 @@ export const renderMovie = (movie, target) => {
             </div>
             <meter class="movie-card-meter" min="0" max="10" value="${movie.vote_average}"></meter>
             <input type="hidden" value="${movie.id}">
-            <button  class="edit-movie-btn" data-bs-toggle="modal" data-bs-target="#editModal${movie.id}">Edit Movie</button>
-            <button  class="delete-movie-btn">Delete Movie</button>
+            <div class="edit-delete-group">
+            <button  class="edit-movie-btn" data-bs-toggle="modal" data-bs-target="#editModal${movie.id}"><span>Edit Movie</span></button>
+            <button  class="delete-movie-btn"><span>Delete Movie</span></button></div>
             
         `;
     // IF we had buttons in here that needed event listeners, we would do it here
