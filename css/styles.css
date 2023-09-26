@@ -81,7 +81,7 @@ header.container {
 .movie-card-rating {
 	font-size: 14px;
 	font-weight: 400;
-	color: var(--dark-grey);
+	/*color: var(--dark-grey);*/
 }
 .movie-card-meter {
 	width: 100%;
@@ -147,6 +147,7 @@ article img {
 .poster-img {
 	width: 460px;
 	border-radius: 30px;
+	margin: unset;
 }
 .poster-img-carousel{
 	border-radius: 25px;
@@ -323,4 +324,38 @@ form.search-element h4 {
 .delete-movie-btn:hover span:after {
 	opacity: 1;
 	right: 0;
+}
+.modal-content{
+	background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
+}
+#addMovieButton{
+	background: rgb(6,14,131);
+	background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
+	border: none;
+	width: 300px;
+}
+#addMovieButton:hover {
+	background: rgb(0,3,255);
+	background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+}
+#add-movie-btn{
+	background: radial-gradient(circle at 10% 20%, rgb(221, 49, 49) 0%, rgb(119, 0, 0) 90%);
+}
+#add-movie-btn:hover {background-color: #3e8e41}
+
+#add-movie-btn:active {
+	background-color: #3e8e41;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
+textarea {
+	width: 200px;
+	height: 30px;
+	/*padding: 12px 20px;*/
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	background-color: #f8f8f8;
+	font-size: 16px;
+	resize: none;
 }
