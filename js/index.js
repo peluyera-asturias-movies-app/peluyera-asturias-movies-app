@@ -13,8 +13,10 @@ const closeModal = document.getElementById("closeModal");
 
 //button to search movies from API
 const searchMovieBtn = document.getElementById("search-movie-btn");
+//search iput
+const searchInput = document.getElementById("search-movie-input");
 //captures value of search input
-let searchInput = document.getElementById("search-movie-input").value;
+// let searchInputValue = document.getElementById("search-movie-input").value;
 // below 4 variables capture values from add movie form
 const addMovieForm = document.getElementById("movie-form");
 let addMovieFormTitle = document.getElementById("title").value;
@@ -76,10 +78,7 @@ addMovieBtn.addEventListener("click", (e)=>{
     
 });
 
-
-
-
-
+//////////////////////////DELETE MOVIE
 // function to delete movie
 let deleteMovieBtn = document.getElementsByClassName("delete-movie-btn");
 
@@ -96,16 +95,22 @@ for (let i = 0; i < deleteMovieBtn.length; i++) {
 
 };
 
-// const searchList = document.getElementById("search-list")
-// function findMovie () {
-//     let searchTerm = document.getElementById("search-movie-input").value.trim();
-//     if (searchTerm.length > 0){
-//         searchList.classList.remove("hide-search-list");
-//         getMovieByTitleOMDB(searchTerm);
-//     } else {
-//         searchList.classList.add("hide-search-list")
-//     }
-// }
+////////////////////////SEARCH FUNCTIONALITY
+
+const searchList = document.getElementById("search-list")
+function findMovie () {
+    let searchTerm = document.getElementById("search-movie-input").value.trim();
+
+    if (searchTerm.length > 0){
+        searchList.classList.remove("hide-search-list");
+        getMovieByTitleOMDB(searchTerm);
+        
+    } else {
+        searchList.classList.add("hide-search-list")
+    }
+}
+
+searchInput.addEventListener("keyup",findMovie);
 
 //////////////////////////////////////////////////
 //////// MAIN METHOD
@@ -128,7 +133,15 @@ for (let i = 0; i < deleteMovieBtn.length; i++) {
         const target = document.querySelector("#carousel");
         renderPoster(poster, target);
     };
-
-
+    
+    
 })();
 // poster https://image.tmdb.org/t/p/w500 + poster path
+
+
+
+/////////////////ADD MOVIES MANUALY
+// let newMovie= await searchMoviesTMDB("space jam");
+// console.log(newMovie.results[0]);
+//
+// postMovie(newMovie.results[0]);

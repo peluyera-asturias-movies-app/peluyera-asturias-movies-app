@@ -63,14 +63,17 @@ export const renderModal = (movie) => {
     });
     document.body.appendChild(modal);
 }
+
+const IMG_PATH = "https://image.tmdb.org/t/p/w500";
 export const renderMovie = (movie, target) => {
     const movieCard = document.createElement("article");
+    let moviePoster = (movie.poster_path === undefined) ? 'https://via.placeholder.com/400x600' : IMG_PATH + movie.poster_path;
     movieCard.classList.add("movie-card");
     // console.log(movie);
     movieCard.innerHTML = `
             <div class="title-year">
             <div class=" align-items center">
-            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="poster-img" alt="poster-img">
+            <img src="${moviePoster}"  class="poster-img" alt="poster-img">
              <p class="movie-card-year">${movie.release_date}</p>
             ${movie.overview && `<p class="movie-card-description">${movie.overview}.</p>`}
             </div>
@@ -124,3 +127,4 @@ export const renderPoster = (movie, target) => {
         `;
     target.appendChild(posterCard);
 };
+

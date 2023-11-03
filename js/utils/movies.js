@@ -192,8 +192,6 @@ const hideLoader = () =>{
 
 
 
-
-
 export { getMovies, getMovieById, getMovieByTitleOMDB, deleteMovie,postMovie,searchMovieByTitleLocal,patchMovie,searchMoviesTMDB,latestMoviesList,showLoader,hideLoader,getMoviesNoLoader};
 
 

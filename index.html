@@ -15,13 +15,13 @@
         <div class="row flex-grow">
             <div class="col column-logo flex-grow w-100">
                 <div class="logo">
-                    <span>Cruzzin P & Co.</span> Movies
+                    <span>TV</span> Flix
                 </div>
             </div>
             <div class="col d-flex justify-content-between">
                 <button id="addMovieButton">Add Movie</button>
                 <form class="search-element">
-                    <input id="search-movie-input" autocomplete="off" placeholder="Search Favorites.." onkeyup="findMovie()">
+                    <input id="search-movie-input" autocomplete="off" placeholder="Search Favorites..">
                     <div id="search-list" class="search-list">
                     <!--SEARCH LIST HERE-->
                         <div class="search-list-item hide-search-list">
@@ -91,29 +91,6 @@
 
 <!-- MAIN -->
 <script type="module" src="js/index.js"></script>
-<script>
-    const getMovieByTitleOMDB = async (title) => {
-        const url = `https://www.omdbapi.com/?plot=full&s=${title}&page=1&type=movie&apikey=96b463c9`;
-        const options = {
-            method: "GET",
 
-        };
-        const response = await fetch(url, options);
-        const movie = await response.json();
-        console.log(movie);
-        return movie;
-    };
-
-    const searchList = document.getElementById("search-list")
-    function findMovie () {
-        let searchTerm = document.getElementById("search-movie-input").value.trim();
-        if (searchTerm.length > 0){
-            searchList.classList.remove("hide-search-list");
-            getMovieByTitleOMDB(searchTerm);
-        } else {
-            searchList.classList.add("hide-search-list")
-        }
-    }
-</script>
 </body>
 </html>
